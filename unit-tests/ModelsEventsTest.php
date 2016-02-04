@@ -169,6 +169,9 @@ class ModelsEventsTest extends PHPUnit_Framework_TestCase
 			'afterSave' => array(
 				'GossipRobots' => 2,
 			),
+			'afterFetch' => array(
+				'GossipRobots' => 2,
+			),
 		));
 
 	}
@@ -192,9 +195,12 @@ class ModelsEventsTest extends PHPUnit_Framework_TestCase
 		$robot->delete();
 
 		$this->assertEquals($trace, array(
+			'afterFetch' => array(
+				'GossipRobots' => 1,
+			),
 			'beforeDelete' => array(
 				'GossipRobots' => 1,
-			)
+			),
 		));
 
 	}
